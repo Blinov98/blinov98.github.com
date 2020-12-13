@@ -8,14 +8,14 @@ rangeLengh.oninput = () =>{
     outrange.innerHTML = rangeLengh.value;
 }
 
-// tableOn.onclick = () => {
-//     for(let i = 2; i<10; i++) {
-//         for(let k = 2; k < 10; k++){
-//             Out.innerHTML += `${i}*${k} = ${i*k} <br>`;
-//         }
-//         Out.innerHTML +='<hr>'
-//     }
-// }
+ tableOn.onclick = () => {
+     for(let i = 2; i<10; i++) {
+         for(let k = 2; k < 10; k++){
+            Out.innerHTML += `${i}*${k} = ${i*k} <br>`;
+         }
+         Out.innerHTML +='<hr>'
+    }
+}
 
 let priceOut =  document.querySelectorAll('.priceout');
 let outPriceValue = document.querySelector('.outpricevalue');
