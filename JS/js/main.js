@@ -1,32 +1,63 @@
-
-let Out = document.querySelector('.out');
-let rangeLengh = document.querySelector('#range-1');
-let outrange = document.querySelector('.outrange');
-let tableOn = document.querySelector('.table');
-
-rangeLengh.oninput = () =>{
-    outrange.innerHTML = rangeLengh.value;
-}
-
-// tableOn.onclick = () => {
-//     for(let i = 2; i<10; i++) {
-//         for(let k = 2; k < 10; k++){
-//             Out.innerHTML += `${i}*${k} = ${i*k} <br>`;
-//         }
-//         Out.innerHTML +='<hr>'
-//     }
-// }
-
-let priceOut =  document.querySelectorAll('.priceout');
-let outPriceValue = document.querySelector('.outpricevalue');
-
-
-for(i = 0;i < priceOut.length;i++){
-    priceOut[i].onclick = function(){
-        let priceValue = document.querySelector('#price').value;
-        let amount = this.getAttribute('data');
-        console.log(priceValue*amount)
-        outPriceValue.innerHTML = priceValue*amount+' руб';
+'use strict';
+const person = {
+    name: 'Nikita',
+    age:27,
+    call:function(){
+        console.log('Not bad')
     }
+}
+Object.prototype.sayHello = function(){
+    console.log('прототип работает!!!')
+}
+console.log(person)
+let numOnec = Object.create(person);
+console.log(numOnec)
 
+const objectNew = {
+    name:'nikita',
+    age:22,
+    haight:174,
+    infoMan:function(job){
+        console.group(`${this.name} info`);
+        console.log(`Name is ${this.name}`);
+        console.log(`Age is ${this.age}`);
+        console.log(`Work is ${job}`);
+        console.groupEnd()
+    }
+}
+const lena = {
+    name:'Elena',
+    age:23
+}
+objectNew.infoMan.bind(objectNew,'Менеджер')();
+objectNew.infoMan.call(lena,'Врач')
+// ====================================
+// Практика с прототипами!!!
+let lg = [1,2,3,4,5];
+let massivE = [2,4,6,8];
+
+Array.prototype.NFG = (function(q){
+    return this.map(function(n){
+        return q * n;
+    })
+})
+console.log(lg.NFG(200));
+console.log(massivE.NFG(6));
+
+
+// ======================================
+const inPutText = document.querySelector('.email');
+const btnSub = document.querySelector('.submit');
+const outPut = document.querySelector('.output');
+
+function urlOut(domain){
+    return function(url){
+        return ` https://${url}.${domain}<br>`;
+    }
+}
+const comUrl = urlOut('com');
+
+btnSub.onclick = function() {
+    outPut.innerHTML += comUrl(`${inPutText.value}`) ;
+    
 }
